@@ -3,6 +3,9 @@
 <div class="sideBarTitle">Javascript-Tips</div>
 
 
+* [类型转换 ](base/#类型转换)
+    * [隐式转换 ](base/#隐式转换)
+    * [显式转换 ](base/#显式转换)
 * [repalce 和 replaceWidth ](base/#repalce和replaceWidth)
     * [replace ](base/#replace)
     * [replaceWidth ](base/#replaceWidth)

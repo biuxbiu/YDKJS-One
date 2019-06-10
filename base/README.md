@@ -5,6 +5,15 @@
 
 <a href="http://javascript-junior.biuxbiu.design/#/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="168" height="20"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="168" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path fill="#555" d="M0 0h135v20H0z"/><path fill="#97ca00" d="M135 0h33v20H135z"/><path fill="url(#b)" d="M0 0h168v20H0z"/></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110"> <text x="685" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="1250">Javascript Junior Level</text><text x="685" y="140" transform="scale(.1)" textLength="1250">Javascript Junior Level</text><text x="1505" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="230">Link</text><text x="1505" y="140" transform="scale(.1)" textLength="230">Link</text></g> </svg></a>
 
+## 类型转换
+在 `Javascript` 中存在着类型转换。我们可以用公式来总结他们之间的转换规则。
+
+#### 隐式转换
+`replace` 用来替换匹配的字符或者替换正则表达式匹配的字符串。
+
+#### 显式转换
+`replace` 用来替换匹配的字符或者替换正则表达式匹配的字符串。
+
 ## repalce和replaceWidth
 `replace` 和 `replaceWidth` 都含有替换的意思。
 
