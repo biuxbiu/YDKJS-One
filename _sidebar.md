@@ -3,6 +3,11 @@
 <div class="sideBarTitle">Javascript-Tips</div>
 
 
+* [控制台常见的几种错误 ](error/#控制台常见的几种错误)
+    * [SyntaxError-语法解析错误](error/#SyntaxError-语法解析错误)
+    * [ReferenceError-引用错误](error/#ReferenceError-引用错误)
+    * [RangeError-范围错误](error/#RangeError-范围错误)
+    * [TypeError-类型错误](error/#TypeError-类型错误)
 * [类型转换 ](base/#类型转换)
     * [隐式转换 ](base/#隐式转换)
     * [显式转换 ](base/#显式转换)
