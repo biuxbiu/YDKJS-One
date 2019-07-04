@@ -30,6 +30,14 @@ Math.max(2,4,-);               //Uncaught SyntaxError: Unexpected token )
 
 <br>
 
+`赋值没有加双引号也会导致语法错误`
+```copy
+var text = hello world;         //Uncaught SyntaxError: Unexpected identifier
+                               //【意外的标识符】括号里少了 '引号'；
+```
+
+<br>
+
 ###### ReferenceError-引用错误
 
  `引用到没有定义的变量或者函数`；
@@ -54,7 +62,7 @@ fun();                          //引用没有定义的 `fun`;
 
 ###### TypeError-类型错误
 
-`变量或者参数不是预期的类型的时候，比如 `new` 一个字符串或者调用对象不存在`
+`变量或者参数不是预期的类型的时候，比如 'new' 一个字符串或者调用对象不存在`
 ```copy
 var text = new 'hello world';       //"hello world" is not a constructor
 var text = new  123123;             //"hello world" is not a constructor
