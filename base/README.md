@@ -1,4 +1,5 @@
 # Javascript
+
 本文章对 `Javascript` 只是小总结（持续优化）。
 
 希望大家先对基础教程 `Javascript Junior Level` 了解一下再看这一篇文章。

@@ -1,12 +1,10 @@
 <!-- ![logo](_media/icon.svg) -->
 
-# Javascript Middle Level
+# Javascript Tips
 
-> 基于 Javascript Junior Level 的知识总结
+> What A Simple and Easy Way to Understand Javascript
 
-* 1小时巩固 Javascript 基本知识
-
-[GitHub](#)
+[GitHub](https://github.com/biuxbiu)
 [Get Started](/base/#javascript)
 
 ![color](#fff)
