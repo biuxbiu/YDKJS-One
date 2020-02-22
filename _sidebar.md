@@ -1,9 +1,8 @@
-<!-- <img class="logo" src="img/logo.png" /> -->
+- <a href="http://www.biuxbiu.design/#/" target="_blank"><img class="logo" src="img/logo.png" /></a>
 
-<div class="sideBarTitle">Javascript-Tips</div>
+<!-- <div class="sideBarTitle">Javascript-Tips</div> -->
 
-
-* [TIPS ](tips/#Javascript-Tips)
+* [Javascript Tips ](tips/#Javascript-Tips)
     * [js中的花括号写法 ](tips/#js中的花括号写法)
     * [阻止浏览器双击页面放大 ](tips/#阻止浏览器双击页面放大)
     * [阻止弹层滚动影响弹层下方内容 ](tips/#阻止弹层滚动影响弹层下方内容)

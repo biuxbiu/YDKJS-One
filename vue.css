@@ -57,8 +57,8 @@ div#app:empty:before {
     font-weight: 700
 }
 
-.search.search{
-    padding: 10px 20px ;
+.search.search {
+    padding: 10px 20px;
 }
 
 body,
@@ -234,10 +234,10 @@ main.hidden {
 
 .anchor span {
     color: #34495e
-    /* color: #ffffff */
+        /* color: #ffffff */
 }
 
-#javascript-junior-level span{
+#javascript-junior-level span {
     color: #000000
 }
 
@@ -427,7 +427,7 @@ body.sticky .sidebar-toggle {
     border-bottom-right-radius: 2px;
     border-left: 4px solid #f66;
     border-top-right-radius: 2px;
-    margin: 2em 0;
+    margin: 1em 0;
     padding: 12px 24px 12px 30px;
     position: relative
 }
@@ -697,7 +697,7 @@ section.cover blockquote>p>a:hover {
 
 .sidebar,
 body {
-    background-color: #fff ;
+    background-color: #fff;
 }
 
 
@@ -719,7 +719,7 @@ body {
     white-space: nowrap;
 }
 
-.logo{
+.logo {
     width: 40%;
 }
 
@@ -774,7 +774,7 @@ body {
 
 .markdown-section h4 {
     font-size: 1.25rem;
-    margin-top:50px;
+    margin-top: 50px;
 }
 
 .markdown-section h5 {
@@ -786,8 +786,7 @@ body {
     font-size: 1rem
 }
 
-.markdown-section figure,
-.markdown-section p {
+.markdown-section figure {
     margin: 1.2em 0
 }
 
@@ -806,13 +805,14 @@ body {
 .markdown-section blockquote {
     border-left: 4px solid var(--theme-color, #42b983);
     color: #858585;
-    margin: 2em 0;
-    padding-left: 20px
+    margin: 1em 0;
+    padding: 12px 24px 12px 30px;
+    background: var(--theme-color, #f8f8f8);
 }
 
 .markdown-section blockquote p {
     font-weight: 600;
-    margin-left: 0
+    margin: 0;
 }
 
 .markdown-section iframe {
@@ -834,6 +834,7 @@ body {
     padding: 3px 5px;
     white-space: pre-wrap;
 }
+
 /* 
 .markdown-section code{
     background-color: #42b983;
@@ -844,9 +845,10 @@ body {
     font-family: Roboto Mono, Monaco, courier, monospace;
 } */
 
-.markdown-section code, .markdown-section pre{
+.markdown-section code,
+.markdown-section pre {
     background-color: #f8f8f8;
-        font-family: Roboto Mono,Monaco,courier,monospace;
+    font-family: Roboto Mono, Monaco, courier, monospace;
 }
 
 .markdown-section pre {
@@ -998,59 +1000,64 @@ pre:after {
     top: 0
 }
 
-.indexBg{
+.indexBg {
     position: fixed;
     left: 0;
-    top:0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: #42b983;
     color: #fff;
 }
-.indexText{
+
+.indexText {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
-.developerLogo{
+.developerLogo {
     height: 50px;
     width: 220px;
     display: block;
     overflow: hidden;
 }
 
-.vueLogo{
+.developerLogo+.developerLogo {
+    margin-top: 10px;
+}
+
+.vueLogo {
     text-decoration: none;
     display: -webkit-box;
     display: box;
-    -webkit-box-align:center;
-    box-align:center;
+    -webkit-box-align: center;
+    box-align: center;
     color: #505d6b;
 }
 
-.vueLogo img{
+.vueLogo img {
     width: 45px;
     margin-right: 10px;
     display: block;
 }
 
-.vueLogo p{
+.vueLogo p {
     -webkit-box-flex: 1;
     box-flex: 1;
     line-height: 1;
 }
 
-.MoreWay{
+.MoreWay {
     font-size: 14px;
     font-weight: bold;
-    margin-top:40px;
+    margin-top: 40px;
     line-height: 1;
 }
 
-.pagination-item-title.pagination-item-title{
-    margin-top:10px;
+.pagination-item-title.pagination-item-title {
+    margin-top: 10px;
 }
 
 .sideBarTitle {
@@ -1059,4 +1066,8 @@ pre:after {
     margin-top: 40px;
     line-height: 1;
     margin-bottom: 10px;
+}
+
+.descripe {
+    display: inline-block;
 }
