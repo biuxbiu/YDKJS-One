@@ -1,6 +1,25 @@
-#### prevent-webpage-scale
+# Javascript-Tips
 
-```copy
+`Javascript` 使用小技巧
+
+#### js中的花括号写法
+
+```javascript
+var textOne = 'hello';
+var textTwo = 'world';
+
+console.log(textOne + ' ' + textTwo);               //hello world
+console.log(`${textOne}` + ' ' + `${textTwo}`);     //hello world
+```
+
+!>注意不是单引号，是 `esc` 下面的小点点。
+
+<Br>
+
+
+#### 阻止浏览器双击页面放大
+
+```javascript
 window.onload = function () {
     document.addEventListener('touchstart', function (event) {
         if (event.touches.length > 1) {
@@ -18,11 +37,12 @@ window.onload = function () {
 }
 ```
 
+<Br>
 
 
-#### prevent-body-scroll
+#### 阻止弹层滚动影响弹层下方内容
 
-```copy
+```javascript
 $.smartScroll = function (container, selectorScrollable) {
     // 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
     if (!selectorScrollable || container.data('isBindScroll')) {
@@ -134,42 +154,11 @@ $.smartScroll = function (container, selectorScrollable) {
  $.smartScroll($('.modal-layer'), '.modal-body');
 ```
 
+<Br>
 
-#### scrollbag-in-ios
+#### 滑动方向
 
-```copy
-//scrollbar 高度
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-
-
-//scrollbar-thumb 高度
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #fff;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-}
-
-::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(255,0,0,0.4);
-}
-
-body{
-  -webkit-overflow-scrolling: auto;
-}
-```
-
-#### touchdirection
-
-```copy
+```javascript
 # touchdirection
 touchdirection
 
@@ -237,10 +226,11 @@ var startx, starty;
 
 ```
 
+<Br>
 
 #### js手势
 
-```copy
+```javascript
 纯js 判断手势滑动方向
 
 $('body').on('touchstart', '#gallerySlider img', function(e) {
@@ -277,30 +267,32 @@ console.log("上划");
 
 ```
 
+<Br>
 
-#### iframe
+#### iframe相关
 
-```copy
+```javascript
 //解决 iframe 弹层问题
-//    var parentHtml = window.parent.document.getElementsByTagName('html')[0], // 获取父级页面高度
+var parentHtml = window.parent.document.getElementsByTagName('html')[0]; // 获取父级页面高度
 
-//        parentIframe = window.parent.document.getElementById('iframe_act'),  // 获取父级 #iframe 高度
+var parentIframe = window.parent.document.getElementById('iframe_act');  // 获取父级 #iframe 高度
 
-//        myIframeLayer = document.getElementById('iframeLayer');  //  获取子页面 #iframe div 高度
+var myIframeLayer = document.getElementById('iframeLayer');  //  获取子页面 #iframe div 高度
 
-//    parentHtml.style.height = parentHtml.clientHeight + 'px'; // 设置父级窗口大小
+var parentHtml.style.height = parentHtml.clientHeight + 'px'; // 设置父级窗口大小
 
-//    parentHtml.style.overflow = 'hidden'; // 设置父级窗口大小
+var parentHtml.style.overflow = 'hidden'; // 设置父级窗口大小
 
-//    parentIframe.style.height = parentHtml.clientHeight  + 'px'; // 设置 #iframe 窗口大小
+var parentIframe.style.height = parentHtml.clientHeight  + 'px'; // 设置 #iframe 窗口大小
 
-//    myIframeLayer.style.height = parentHtml.clientHeight + 'px'; // 设置子页面 #iframe div 窗口大小
+var myIframeLayer.style.height = parentHtml.clientHeight + 'px'; // 设置子页面 #iframe div 窗口大小
 ```
 
+<Br>
 
 #### 如何采集页面卡顿的程度
 
-```copy
+```javascript
 目前为止，我们已经知道了什么是卡顿、卡顿的发生原因、如何在 Chrome 中查看卡顿，接下来我们要想办法用 JS 获取页面的卡顿程度。
 
 利用上述的原理：浏览器是单线程的，如果卡顿发生了那么后面队列堆积的方法就得不到执行。
@@ -312,37 +304,37 @@ console.log("上划");
 var t = new Date(); setInterval(function(){ console.log(new Date() - t); t = new Date(); }, 100);
 ```
 
-#### input-file-in-phone
+<br>
 
-```copy
-input type="file" accept="video/*;capture=camcorder" 
+#### iphone里的input
 
-input type="file" accept="audio/*;capture=microphone"
-
-input type="file" accept="image/*;capture=camera"直接调用相机
-
-input type="file" accept="image/*" 调用相机 图片或者相册
-
+```javascript
+<input type="file" accept="video/*;capture=camcorder"/>
+<input type="file" accept="audio/*;capture=microphone"/>
+<input type="file" accept="image/*;capture=camera"/>       //直接调用相机
+<input type="file" accept="image/*"/>                      //调用相机 图片或者相册
 ```
 
-#### click-other
+<Br>
 
-```copy
-//click other place close
+#### 点击弹窗modal以外区域消失
 
-$("body").click(function(e){
-    var _target = $(e.target);
-        if (_target.closest(".btnAction").length == 0) {
-            $('.code').fadeOut();
+```javascript
+//点击弹窗空白区域关闭
+var modalDom = document.getElementById('modal')
+window.addEventListener('click',function(e){
+    var _target_ = e.target;
+    if(!modalDom.contains(_target_)){
+        console.log('close modal')
     }
 })
-
 ```
 
+<Br>
 
 #### margin-top-problem
 
-```copy
+```javascript
 当两个空的块级元素嵌套时，如果内部的块设置有margin-top属性，而且父元素没有下边解决方法所述的特征，那么内部块的margin-top属性会绑架父元素（即将margin-top传递凌驾给了父元素）。
 就好比一个小兵，看到上级有漏洞，就假传圣旨，利用漏洞扩张自己的权利。只要设置父元素的border（栅栏）或者padding（隔离墙），就能管住这个调皮的下属。
 <div id="parrent"> <div id="box1"></div></div>
@@ -362,53 +354,43 @@ hasLayout 会影响一个盒子和其子孙的边距重叠。根据规范，一�
 
 ```
 
+<Br>
 
-#### gravity-in-iphone
+#### 重力感应
 
-```copy
+```javascript
 function motionHandler(event) {
     var accGravity = event.accelerationIncludingGravity;
     document.getElementById("xg").innerHTML = accGravity.x;
     document.getElementById("yg").innerHTML = accGravity.y;
-    var aa = accGravity.x;
     document.getElementById("zg").innerHTML = accGravity.z;
-    
 }
 
 if (window.DeviceMotionEvent) {
     window.addEventListener("devicemotion", motionHandler, false);
 }
-
 ```
 
+<Br>
 
-#### jquery如何判断用户是否在浏览当前网页
 
-```copy
+#### 判断用户是否在当前页面
+
+```javascript
 document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
-        $('#bgMusic source').attr('src', '');
-        $('#bgMusic').get(0).pause();
+        console.log('离开了')
+    }else{
+        console.log('回来了')
     }
 }, false);
-
-var isActive;
-
-window.onfocus = function () {
-    isActive = true;
-};
-
-window.onblur = function () {
-    $('#bgMusic source').attr('src', '');
-    $('#bgMusic').get(0).pause();
-};
-
 ```
 
+<br>
 
 #### jsTips
 
-```copy
+```javascript
 一般我们在让函数立即运行的时候 我们会用
 
     (function(){
@@ -435,7 +417,7 @@ window.onblur = function () {
 #### JavaScript类型转换(上)
 
 
-```copy
+```javascript
 
 转发 @野狗 的文章哈；
 
@@ -670,7 +652,7 @@ var x = + y;
 
 #### 面试题目整理
 
-```copy
+```javascript
 # -面试题目整理
 面试题目整理
 
@@ -875,7 +857,7 @@ setTimeout 的第一个参数使用字符串而非函数的话，会引发内存
 
 #### cursor
 
-```copy
+```javascript
 今天说说怎么样将一个鼠标光标自定成为一个自己想要的图片；
 
 其实很简单：
@@ -892,7 +874,7 @@ cursor: url($img_dir + 'xxx.ico'),default;
 
 #### math
 
-```copy
+```javascript
 `abs(x)	返回数的绝对值`<br>
 `acos(x)	返回数的反余弦值`<br>
 `asin(x)	返回数的反正弦值`<br>
@@ -918,7 +900,7 @@ cursor: url($img_dir + 'xxx.ico'),default;
 
 #### meta
 
-```copy
+```javascript
 
 content的几个属性：<br>
 width viewport的宽度[device-width | pixel_value]width如果直接设置pixel_value数值，大部分的安卓手机不支持，但是ios支持；<br>
@@ -1433,7 +1415,7 @@ Chrome高版本全屏
 
 #### isNaN-Number-parseFloat-parseInt之间的不同
 
-```copy
+```javascript
 # isNaN() Number() parseFloat() parseInt() 之间的不同
 
 
@@ -1537,7 +1519,7 @@ Chrome高版本全屏
 
 #### 透彻parseInt函数
 
-```copy
+```javascript
 # 透彻 parseInt() 函数
 
 
@@ -1623,7 +1605,7 @@ parseInt(123,34)  // 123
 
 #### 透彻parseFloat函数
 
-```copy
+```javascript
 # 透彻 parseFloat() 函数
 
 
@@ -1727,7 +1709,7 @@ parseFloat( 11,22)  // 11 , 遇到逗号停止解析
 
 #### 透彻Numbe函数
 
-```copy
+```javascript
 # 透彻 Number() 函数
 
 
@@ -1916,7 +1898,7 @@ Number.NEGATIVE_INFINITY;  // -Infinity
 
 #### javascript中的LHS与RHS
 
-```copy
+```javascript
 # 温故而知新，javascript 中的 LHS 与 RHS
 
 
@@ -2001,7 +1983,7 @@ console.log(num2);
 
 #### 元素旋转有锯齿的解决方案
 
-```copy
+```javascript
 元素旋转有锯齿的解决方案
 
 在元素添加一个 border:1px solid transparent 便可以有效消除锯齿；
