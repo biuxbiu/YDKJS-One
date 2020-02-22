@@ -5,6 +5,6 @@
 > What A Simple and Easy Way to Understand Javascript
 
 [GitHub](https://github.com/biuxbiu)
-[Get Started](/base/#javascript)
+[Get Started](/tips/#Javascript-Tips)
 
 ![color](#fff)
