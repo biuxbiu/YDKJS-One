@@ -21,11 +21,15 @@ console.log(`${textOne}` + ' ' + `${textTwo}`);     //hello world
 
 ```javascript
 window.onload = function () {
+
+    // 记录是不是连续点击了两次
     document.addEventListener('touchstart', function (event) {
         if (event.touches.length > 1) {
             event.preventDefault();
         }
     });
+
+    // 记录两次点击的时间是否超过 300 毫秒，如果超过 300 毫秒说明是双击，双击则阻止页面默认事件
     var lastTouchEnd = 0;
     document.addEventListener('touchend', function (event) {
         var now = (new Date()).getTime();
@@ -43,6 +47,17 @@ window.onload = function () {
 #### 阻止弹层滚动影响弹层下方内容
 
 ```javascript
+<style>
+.noscroll,
+.noscroll body {
+    overflow: hidden;
+}
+.noscroll body {
+    position: relative;
+}
+</style>
+
+<script>
 $.smartScroll = function (container, selectorScrollable) {
     // 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
     if (!selectorScrollable || container.data('isBindScroll')) {
@@ -151,7 +166,9 @@ $.smartScroll = function (container, selectorScrollable) {
     // 防止多次重复绑定
     container.data('isBindScroll', true);
 }
- $.smartScroll($('.modal-layer'), '.modal-body');
+
+$.smartScroll($('.modal-layer'), '.modal-body');
+ </script>
 ```
 
 <Br>
@@ -159,175 +176,68 @@ $.smartScroll = function (container, selectorScrollable) {
 #### 滑动方向
 
 ```javascript
-# touchdirection
-touchdirection
-
-
 var startx, starty;
-    //获得角度
-    function getAngle(angx, angy) {
-        return Math.atan2(angy, angx) * 180 / Math.PI;
-    };
- 
-    //根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动
-    function getDirection(startx, starty, endx, endy) {
-        var angx = endx - startx;
-        var angy = endy - starty;
-        var result = 0;
- 
-        //如果滑动距离太短
-        if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
-            return result;
-        }
- 
-        var angle = getAngle(angx, angy);
-        if (angle >= -135 && angle <= -45) {
-            result = 1;
-        } else if (angle > 45 && angle < 135) {
-            result = 2;
-        } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
-            result = 3;
-        } else if (angle >= -45 && angle <= 45) {
-            result = 4;
-        }
- 
-        return result;
-    }
-    //手指接触屏幕
-    document.addEventListener("touchstart", function(e) {
-        startx = e.touches[0].pageX;
-        starty = e.touches[0].pageY;
-    }, false);
-    //手指离开屏幕
-    document.addEventListener("touchend", function(e) {
-        var endx, endy;
-        endx = e.changedTouches[0].pageX;
-        endy = e.changedTouches[0].pageY;
-        var direction = getDirection(startx, starty, endx, endy);
-        switch (direction) {
-            case 0:
-                alert("未滑动！");
-                break;
-            case 1:
-                alert("向上！")
-                break;
-            case 2:
-                alert("向下！")
-                break;
-            case 3:
-                alert("向左！")
-                break;
-            case 4:
-                alert("向右！")
-                break;
-            default:
-        }
-    }, false);
 
-```
-
-<Br>
-
-#### js手势
-
-```javascript
-纯js 判断手势滑动方向
-
-$('body').on('touchstart', '#gallerySlider img', function(e) {
-var touch = e.originalEvent,
-startX = touch.changedTouches[0].pageX;
-startY = touch.changedTouches[0].pageY;
-slider.on('touchmove', function(e) {
-e.preventDefault();
-touch = e.originalEvent.touches[0] ||
-e.originalEvent.changedTouches[0];
-if (touch.pageX - startX > 10) {
-console.log("右划");
-slider.off('touchmove');
-showPrevious();
-} else if (touch.pageX - startX < -10) {
-console.log("左划");
-slider.off('touchmove');
-showNext();
+//获得角度
+function getAngle(angx, angy) {
+  return Math.atan2(angy, angx) * 180 / Math.PI;
 };
-if (touch.pageY - startY > 10) {
-console.log("下划");
-} else if (touch.pageY - startY < -10) {
-console.log("上划");
-};
-});
 
-        // Return false to prevent image 
-        // highlighting on Android
-        return false;
+//根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动 
+function getDirection(startx, starty, endx, endy) {
+  var angx = endx - startx;
+  var angy = endy - starty;
+  var result = 0;
 
-    }).on('touchend', function() {
-        slider.off('touchmove');
-    });
+    //如果滑动距离太短
+  if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
+    return result;
+  }
 
-```
+    // 判断角度
+  var angle = getAngle(angx, angy);
+  if (angle >= -135 && angle <= -45) {
+    result = 1;
+  } else if (angle > 45 && angle < 135) {
+    result = 2;
+  } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
+    result = 3;
+  } else if (angle >= -45 && angle <= 45) {
+    result = 4;
+  }
 
-<Br>
-
-#### iframe相关
-
-```javascript
-//解决 iframe 弹层问题
-var parentHtml = window.parent.document.getElementsByTagName('html')[0]; // 获取父级页面高度
-
-var parentIframe = window.parent.document.getElementById('iframe_act');  // 获取父级 #iframe 高度
-
-var myIframeLayer = document.getElementById('iframeLayer');  //  获取子页面 #iframe div 高度
-
-var parentHtml.style.height = parentHtml.clientHeight + 'px'; // 设置父级窗口大小
-
-var parentHtml.style.overflow = 'hidden'; // 设置父级窗口大小
-
-var parentIframe.style.height = parentHtml.clientHeight  + 'px'; // 设置 #iframe 窗口大小
-
-var myIframeLayer.style.height = parentHtml.clientHeight + 'px'; // 设置子页面 #iframe div 窗口大小
-```
-
-<Br>
-
-#### 如何采集页面卡顿的程度
-
-```javascript
-目前为止，我们已经知道了什么是卡顿、卡顿的发生原因、如何在 Chrome 中查看卡顿，接下来我们要想办法用 JS 获取页面的卡顿程度。
-
-利用上述的原理：浏览器是单线程的，如果卡顿发生了那么后面队列堆积的方法就得不到执行。
-
-假如我们配置一个定时器，每隔一段时间 t 就向浏览器的线程队列中丢一个方法进去：
-
-如果线程队列是空闲的，那么我们理论上可以检查到我们的方式每次都是准时的间隔 t 被调用一次； 如果线程队列是繁忙的，那么这个间隔时间将是大于 t 的； 试验方案有了，接下来进行试验。
-
-var t = new Date(); setInterval(function(){ console.log(new Date() - t); t = new Date(); }, 100);
-```
-
-<br>
-
-#### iphone里的input
-
-```javascript
-<input type="file" accept="video/*;capture=camcorder"/>
-<input type="file" accept="audio/*;capture=microphone"/>
-<input type="file" accept="image/*;capture=camera"/>       //直接调用相机
-<input type="file" accept="image/*"/>                      //调用相机 图片或者相册
-```
-
-<Br>
-
-#### 点击弹窗modal以外区域消失
-
-```javascript
-//点击弹窗空白区域关闭
-var modalDom = document.getElementById('modal')
-window.addEventListener('click',function(e){
-    var _target_ = e.target;
-    if(!modalDom.contains(_target_)){
-        console.log('close modal')
-    }
-})
+  return result;
+}
+//手指接触屏幕
+document.addEventListener("touchstart", function (e) {
+  startx = e.touches[0].pageX;
+  starty = e.touches[0].pageY;
+}, false);
+//手指离开屏幕
+document.addEventListener("touchend", function (e) {
+  var endx, endy;
+  endx = e.changedTouches[0].pageX;
+  endy = e.changedTouches[0].pageY;
+  var direction = getDirection(startx, starty, endx, endy);
+  switch (direction) {
+    case 0:
+      alert("未滑动！");
+      break;
+    case 1:
+      alert("向上！")
+      break;
+    case 2:
+      alert("向下！")
+      break;
+    case 3:
+      alert("向左！")
+      break;
+    case 4:
+      alert("向右！")
+      break;
+    default:
+  }
+}, false);
 ```
 
 <Br>
@@ -398,9 +308,6 @@ document.addEventListener("visibilitychange", function () {
     })();
     
     
-
-但，其实关于立即执行的函数还有另外的写法，这是传说中的黑魔法吗，哈哈哈
-
 正文从这里开始，写法如下:
 
     ~function(){
@@ -416,40 +323,39 @@ document.addEventListener("visibilitychange", function () {
 
 #### JavaScript类型转换(上)
 
-
-```javascript
-
-转发 @野狗 的文章哈；
-
-正文从这里开始:
-
 JavaScript 数据类型
 
 JavaScript中能够容纳值的数据类型有五种：
 
+```javascript
 string
 number
 boolean
 object
 function
+```
+
 
 其中对象类型又分为三种：
 
+```javascript
 Object
 Date
 Array
+```
 
 另外两种为不能容纳值的数据类型：
 
+```javascript
 null
 undefined
+```
 
-typeof 操作符
+**typeof 操作符**
 
 你可以使用typeof操作符来查看JavaScript变量的数据类型。
 
-示例
-
+```javascript
 typeof "John"                 
 // 返回 string 
 
@@ -479,27 +385,23 @@ typeof myCar
 
 typeof null                   
 // 返回 object
+```
 
-注意：
-
-NaN 的数据类型为number
-数组的数据类型为object
-日期的数据类型为object
-null的数据类型为object
-未声明变量的数据类型为undefined
+!>NaN 的数据类型为number<br>
+数组的数据类型为object<br>
+日期的数据类型为object<br>
+null的数据类型为object<br>
+未声明变量的数据类型为undefined<br>
 
 typeof 的数据类型
-
 typeof 操作符并非变量。 因为它是一个操作符。同样，操作符( + - * / ) 没有任何数据类型。
-
 typeof的返回值是字符串。
-
 constructor属性
-
 constructor 属性返回所有JavaScript变量的构造函数。
 
 示例
 
+```javascript
 "John".constructor                 
 // 返回函数String()
 
@@ -520,23 +422,24 @@ new Date().constructor
 
 function () {}.constructor         
 // 返回函数 Function()
+```
 
 
 你可以通过检查constructor属性以判断某个对象类型是否是Array (包含关键字"Array")：
 
-示例
-
+```javascript
 function isArray(myArray) {
     return myArray.constructor.toString().indexOf("Array") > -1;
 }
+```
 
 同样，你也可以通过检查constructor属性以判断某个对象类型是否是Date (包含关键词"Date")：
 
-示例
-
+```javascript
 function isDate(myDate) {
     return myDate.constructor.toString().indexOf("Date") > -1;
 }
+```
 
 JavaScript 类型转换
 
@@ -551,8 +454,7 @@ JavaScript的自动转换机制
 
 该函数可以使用在任意类型的数字、字面量、变量或表达式：
 
-示例
-
+```javascript
 String(x)         
 // 返回从变量x转换来的字符串
 
@@ -562,11 +464,13 @@ String(123)
 String(100 + 23)  
 // 返回从表达式转换来的字符串
 
-
-Number对象的toString() 方法也可以达到同样效果。
+Number对象的toString()
+//方法也可以达到同样效果
+```
 
 示例
 
+```javascript
 x.toString()
 (123).toString()
 (100 + 23).toString()
@@ -581,7 +485,8 @@ String(false)
 String(true)         
 // 返回"true"
 
-Boolean 对象的toString() 方法也可以达到同样效果。
+Boolean 对象的toString() 
+// 方法也可以达到同样效果
 
 false.toString()     
 // 返回"false"
