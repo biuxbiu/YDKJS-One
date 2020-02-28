@@ -63,11 +63,16 @@ Boolean(+function(){console.log(1)}())      //false
 Boolean(-function(){console.log(1)}())      //false 同理 `5` 为 `false`
 Boolean(~function(){console.log(1)}())      //true 只有遇到 `+` `-` 才会表达式，才为 `false`
 Boolean(!function(){console.log(1)}())      //true 同理 `8` 
-Boolean("21"<"3")                           //true 按字符比较，`2`<`3` 返回 `true`
-Boolean("21"<3)                             //false 一字符串，一数字，统一转变成数字处理，`21`>3 所以为 `false`
-Boolean("21">3)                             //true
-Boolean("hello">3)                          //false
+Boolean("21"<"3")                           //true 按字符比较，首字符 2<3 返回 `true` 
+Boolean("45">"32")                           //true 按字符比较，首字符 4<3 ，后面无论怎样都不用比 返回 `true` 
+Boolean("21"<3)                             //false 与数字类型比较，统一用 Number() 转换，21 >3 所以为 `false`
+Boolean("25"<34)                            //true 与数字类型比较，统一用 Number() 转换，21 >3 所以为 `false`
+Boolean("21">3)                             //true 与数字类型比较，统一用 Number()， Number('hello') 为 NaN 
+Boolean("hello">3)                          //false 
+Boolean("hello"<10)                         //false
 Boolean("hello">"")                         //true
+Boolean("hello">"10")                       //true 字母的排列在数字前面
+Boolean("hello">"word")                     //false `w` 排在 `h` 后面
 ```
 
 <br>
@@ -95,7 +100,6 @@ var content = text('hello world');
 
 function text(num){  
     //变量 num 充当取值角色，此处为 -- RHS
-
     //var num = 'content' 【隐式变量】
      //此处有一个隐藏了的角色扮演，变量 num 充当了被赋值的角色 -- LHS
 
@@ -105,24 +109,10 @@ function text(num){
 
     console.log(num2);
      //变量 num2 充当取值角色 -- RHS
-
 }
 var content = text('hello world');
   //变量 content 充当被赋值角色 -- LHS
-
   以上有 LHS * 3 , RHS * 3。
-
-## 了解 LHS 和 RHS 对我们的好处
-
-我们知道 LHS 和 RHS 都是对变量来做定义的。但是处理不存在的变量的时候，处理结果是不同的。由于这种不同的处理结果，js 引擎会做出相关的报错信息，这对我们编程定位问题，解决问题是很有帮助的。
-</br>
-比如说：
-
-num = 'hello world'  
-//此处变量 num 充当的是被赋值的角色，在被赋值之前，会先去找一下变量 num 有没有被定义，没有被定义的话，会自动创建一个变量 num。
- 
-console.log(num2);
- //此处的 num2 充当了取值角色 -- RHS，但是该变量 num2 没有被赋值，那么控制面板会抛出错误 num2 is not defined。那我们就可以马上定位到这个 num2 没有被定义。
 
 ```
 
