@@ -46,6 +46,9 @@ console.log(`${textOne}` + ' ' + `${textTwo}`);     //hello world
 
 !>注意自执行函数前面的 `+` `-` ，有时候会被当成表达式，转换成运算符
 
+<br>
+<br>
+
 ###### 你不知道的Boolean
 
 ```javascript
@@ -60,8 +63,15 @@ Boolean(+function(){console.log(1)}())      //false
 Boolean(-function(){console.log(1)}())      //false 同理 `5` 为 `false`
 Boolean(~function(){console.log(1)}())      //true 只有遇到 `+` `-` 才会表达式，才为 `false`
 Boolean(!function(){console.log(1)}())      //true 同理 `8` 
+Boolean("21"<"3")                           //true 按字符比较，`2`<`3` 返回 `true`
+Boolean("21"<3)                             //false 一字符串，一数字，统一转变成数字处理，`21`>3 所以为 `false`
+Boolean("21">3)                             //true
+Boolean("hello">3)                          //false
+Boolean("hello">"")                         //true
 ```
 
+<br>
+<br>
 
 ###### javascript中的LHS与RHS
 
@@ -114,6 +124,6 @@ num = 'hello world'
 console.log(num2);
  //此处的 num2 充当了取值角色 -- RHS，但是该变量 num2 没有被赋值，那么控制面板会抛出错误 num2 is not defined。那我们就可以马上定位到这个 num2 没有被定义。
 
-
-
 ```
+
+###### 
