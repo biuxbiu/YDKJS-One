@@ -1,114 +1,119 @@
+# Javascript-Tips
 
+`Javascript` 使用小技巧
 
+###### js中的花括号写法
 
-## 类型转换
-在 `Javascript` 中存在着类型转换。我们可以用公式来总结他们之间的转换规则。
+```javascript
+var textOne = 'hello';
+var textTwo = 'world';
 
-#### 隐式转换
-`replace` 用来替换匹配的字符或者替换正则表达式匹配的字符串。
-
-#### 显式转换
-`replace` 用来替换匹配的字符或者替换正则表达式匹配的字符串。
-
-## repalce和replaceWidth
-`replace` 和 `replaceWidth` 都含有替换的意思。
-
-#### replace
-`replace` 用来替换匹配的字符或者替换正则表达式匹配的字符串。
-
-语法：
-```copy
-str.replace(reg/string,replacement);
-reg：正则表达式
-string：字符串
+console.log(textOne + ' ' + textTwo);               //hello world
+console.log(`${textOne}` + ' ' + `${textTwo}`);     //hello world
 ```
 
-* 替换单个匹配条件的字符
-```copy
-var str = 'hello world world';
-str.replace(/world/,'biu');         //'hello biu world' 这种情况下只会匹配第一个符合条件的字符。
-//或者
-str.replace('world','biu');
+!>注意不是单引号，是 `esc` 下面的小点点。
+
+<Br>
+
+
+###### 自执行函有哪些
+
+```javascript
+(function () { 
+  console.log(1)      //1
+}()); 
+
+!function () { 
+  console.log(2)      //2
+}();
+
+
+~function () { 
+  console.log(3)      //3
+}();
+
+-function () { 
+  console.log(4)      //4
+}();
+
+
++function () { 
+  console.log(5)      /5
+}();
+
 ```
 
-* 替换所有匹配条件的字符
-```copy
-var str = 'hello world world';
-str.replace(/world/g,'biu')         //'hello biu biu' 这种情况下只会匹配所有符合条件的字符。
+!>注意自执行函数前面的 `+` `-` ，有时候会被当成表达式，转换成运算符
+
+###### 你不知道的Boolean
+
+```javascript
+Boolean(-1)                                 //true 除了 0,NaN,undefined,null,''都为 true
+Boolean('')                                 //false ' '都为 true
+Boolean(' ')                                //true ' '都为 true
+Boolean([0])                                //true [0] 为对象,对象都为 true
+Boolean(1+[0])                              //true 1 + 0 为 true
+Boolean(function(){console.log(false)})     //true funcion 是对象，对象皆为 true
+Boolean(+function(){console.log(true)}())   //fasle 只有遇到 `+` `-` 为表达式 为 `false`
+Boolean(+function(){console.log(1)}())      //false 
+Boolean(-function(){console.log(1)}())      //false 同理 `5` 为 `false`
+Boolean(~function(){console.log(1)}())      //true 只有遇到 `+` `-` 才会表达式，才为 `false`
+Boolean(!function(){console.log(1)}())      //true 同理 `8` 
 ```
 
-* 替换对大小写不敏感的字符
-```copy
-var str = 'WorlD world WoRld';
-str.replace(/world/gi,'biu');        //'biu' 这种情况下会忽略大小写，匹配符合条件的字符
+
+###### javascript中的LHS与RHS
+
+**当 `变量` 充当被赋值角色，我们称它为 `LHS`**，**当 `变量` 充当取值角色，我们称它为 `RHS`**
+
+
+```javascript
+var text = 'hello world';  //变量 text 被赋值，所以是 LHS
+console.log(text);  //变量 text 取值，所以是RHS
 ```
 
-使用 `/gi` 和 `/ig` 的功能是一样的。下面的 `正则表达式` 会有简单的介绍
+**举个例子**
 
-> `replace` 在条件判断的时候会使用到 `正则表达式` 。正则表达式在下面的例子可以简单看到。
+```javascript
+function text(num){  
+    var num2 = num; 
+    console.log(num2);
+var content = text('hello world');
 
-#### replaceWidth
-`replaceWidth` 是用来替换指定的 `html` 内容或者元素，属于 `Jquery` 的语法。
+我们来细细分解一下
 
-* 替换标签
-```copy
-<div>Hello world</div>
-<script>
-    $('div').replaceWidth('<h1>it is changed</h1>');
-</script>
-```
+function text(num){  
+    //变量 num 充当取值角色，此处为 -- RHS
 
-## 正则表达式
-简单的正则判断：
-```copy
-/i                  //忽略大小写
-/g                  //全局匹配
-/m                  //多行查找
-/gi                 //全局匹配，忽略大小写  `****`
-/ig                 //全局匹配，忽略大小写  `****`
-.                   //任意一个字符
-/^A/g               //全局匹配以 `A` 开头的字符
-/A$/g               //全局匹配以 `A` 结尾的字符
-```
+    //var num = 'content' 【隐式变量】
+     //此处有一个隐藏了的角色扮演，变量 num 充当了被赋值的角色 -- LHS
 
-## Javascript中的高度
+    var num2 = num; 
+     //变量 num2 充当被赋值角色 -- LHS。 
+     //变量 num 充当取值角色 -- RHS
 
+    console.log(num2);
+     //变量 num2 充当取值角色 -- RHS
 
-#### innerWidth和innerHeight
-`Window.innerWidth`：浏览器宽度，包括 `滚动条`<br>
-`Window.innerHeight`：浏览器高度，包括 `滚动条`
+}
+var content = text('hello world');
+  //变量 content 充当被赋值角色 -- LHS
 
-`Window.outterWidth`：浏览器整体宽度<br>
-`Window.outterHeight`：浏览器整体高度，包括 `地址栏，tab`
+  以上有 LHS * 3 , RHS * 3。
 
->`outter` 永远比 `inner` 大。
+## 了解 LHS 和 RHS 对我们的好处
 
-<img src="https://developer.mozilla.org/@api/deki/files/213/=FirefoxInnerVsOuterHeight2.png">
+我们知道 LHS 和 RHS 都是对变量来做定义的。但是处理不存在的变量的时候，处理结果是不同的。由于这种不同的处理结果，js 引擎会做出相关的报错信息，这对我们编程定位问题，解决问题是很有帮助的。
+</br>
+比如说：
 
-
-#### clientWidth和clientHeight
-`document.body.clientWidth`：表示 `body` 元素内部的宽度，`包括边距`，但是 `不包括滚动条，边框，外边距`<br>
-`document.body.clientHeight`：表示 `body` 元素内部的高度，`包括边距`，但是 `不包括滚动条，边框，外边距`
-
-<img src="https://developer.mozilla.org/@api/deki/files/185/=Dimensions-client.png">
-
->`Jquery` 中的 $(window).width() 跟 `document.body.clientWidth` 的值一样。
-
-#### offsetWidth和offsetHeight
-`offsetWidth`：输出的是一个布局宽度，`包括边框，内边距，包括滚动条`，但是 `不包括外边距`<br>
-`offsetHeight`：输出的是一个布局高度，`包括边框，内边距，包括滚动条`，但是 `不包括外边距`
-
-<img src="https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png">
+num = 'hello world'  
+//此处变量 num 充当的是被赋值的角色，在被赋值之前，会先去找一下变量 num 有没有被定义，没有被定义的话，会自动创建一个变量 num。
+ 
+console.log(num2);
+ //此处的 num2 充当了取值角色 -- RHS，但是该变量 num2 没有被赋值，那么控制面板会抛出错误 num2 is not defined。那我们就可以马上定位到这个 num2 没有被定义。
 
 
-#### scrollWidth和scrollHeight
-`scrollWidth`：表示内容的横向宽度，被隐藏的内容都会被计算在内。`包括内边距`，但是 `不包括边框，外边距，滚动条`<br>
-`scrollHeight`：表示内容的竖向高度，被隐藏的内容都会被计算在内。`包括内边距`，但是 `不包括边框，外边距，滚动条`
 
->某种情况下，`document.body.clientHeight` `document.body.scrollHeight` `document.body.offsetHeight` 的值是一样的。
-
-```copy
-console.log(document.body.clientHeight);
-console.log(document.body.offsetHeight);
-console.log(document.body.scrollHeight);
 ```
