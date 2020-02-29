@@ -49,6 +49,22 @@ console.log(`${textOne}` + ' ' + `${textTwo}`);     //hello world
 <br>
 <br>
 
+###### 基本数据类型
+
+|类型|结果|
+|::--|::--|
+|null|'boject'|
+|boolean|'boolean'|
+|string|'string'|
+|number|'number'|
+|object|'object'|
+|function|'function'|
+|function|'function'|
+
+
+<br>
+<br>
+
 ###### 你不知道的Boolean
 
 `Boolean`：检查逻辑对象是 `true` 还是 `false`
@@ -184,20 +200,50 @@ isNaN('12,12,12')     //NaN，true
 
 ```javascript
 typeof undefined                  //"undefined"
+typeof card                       //"undefined"
 typeof "undefined"                //"string"
-typeof 123                        //"number"
 typeof "123"                      //"string"
-typeof null                       //"object"
+typeof 123                        //"number"
 typeof NaN                        //"number"
+typeof Math.abs()                 //"number"
 typeof false                      //"boolean"
 typeof true                       //"boolean"
+typeof null                       //"object"
 typeof [1,2,3,4,5]                //"object"
 typeof {name:"peter",age:"20"}    //"object"
+typeof new Date()                 //"object"
+typeof {}                         //"object"
+typeof function(){}               //"function"
+typeof Math.abs                   //"function"
 ```
 
 
 <br>
 <br>
+
+
+###### 类型转换技巧
+
+总结：
+
+* `typeof` 可以判断出 `number` `boolean` `function` `string` `undefined`
+* 可以通过 `String()` 和 `toString()` 将任意类型转换成 `string`
+* 用 `parsInt()` 或者 `parsFloat()` 来将任意类型转换成 `number`
+* 用 `thisType === null` 来判断 `thisType` 是不是 `null`
+* 判断全局变量是否存在 `typeof window.varName === undefined`
+
+
+###### constructor属性
+
+`constructor`：返回所有变量的构造函数
+
+```javascript
+(3.14).constructor.toString()                 //function Number()
+[1,2,3].constructor.toString()                //function Array()
+(function aa(){}.)constructor.toString()      //function Function()
+'hello world'.constructor.toString()          //fucntoin String()
+true.constructor.toString()                   //function Boolean()
+```
 
 
 

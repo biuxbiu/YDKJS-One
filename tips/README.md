@@ -70,48 +70,6 @@ null
 undefined
 ```
 
-**typeof 操作符**
-
-你可以使用typeof操作符来查看JavaScript变量的数据类型。
-
-```javascript
-typeof "John"                 
-// 返回 string 
-
-typeof 3.14                   
-// 返回 number
-
-typeof NaN                    
-// 返回 number
-
-typeof false                  
-// 返回 boolean
-
-typeof [1,2,3,4]              
-// 返回 object
-
-typeof {name:'John', age:34}  
-// 返回 object
-
-typeof new Date()             
-// 返回 object
-
-typeof function () {}         
-// 返回 function
-
-typeof myCar                  
-// 返回 undefined (如果myCar未声明)
-
-typeof null                   
-// 返回 object
-```
-
-!>NaN 的数据类型为number<br>
-数组的数据类型为object<br>
-日期的数据类型为object<br>
-null的数据类型为object<br>
-未声明变量的数据类型为undefined<br>
-
 typeof 的数据类型
 typeof 操作符并非变量。 因为它是一个操作符。同样，操作符( + - * / ) 没有任何数据类型。
 typeof的返回值是字符串。
