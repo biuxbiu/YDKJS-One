@@ -1,6 +1,6 @@
 # Javascript Tips
 
-摘录 Javascript 小技巧
+你不知道的 `Javascript` 上卷重点难点
 
 <br>
 <br>

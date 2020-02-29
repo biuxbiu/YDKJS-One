@@ -1,10 +1,10 @@
 <!-- ![logo](_media/icon.svg) -->
 
-# Javascript Tips
+# You Dont Know Js
 
-> What A Simple and Easy Way to Understand Javascript
+> What A Simple and Easy Way to Understand You Dont Know Js - PartOne
 
 [GitHub](https://github.com/biuxbiu)
-[Get Started](/base/#Javascript-Tips)
+[Get Started](/base/#YDKJS-One)
 
 ![color](#fff)
