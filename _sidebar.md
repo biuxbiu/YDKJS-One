@@ -7,6 +7,8 @@
     * [自执行函有哪些](base/#自执行函有哪些)
     * [你不知道的Boolean](base/#你不知道的Boolean)
     * [你不知道的Number](base/#你不知道的Number)
+    * [你不知道的isNaN](base/#你不知道的isNaN)
+    * [你不知道的typeof](base/#你不知道的typeof)
     * [javascript中的LHS与RHS](base/#javascript中的LHS与RHS)
 * [控制台常见的几种错误 ](error/#控制台常见的几种错误)
     * [SyntaxError-语法解析错误](error/#SyntaxError-语法解析错误)
