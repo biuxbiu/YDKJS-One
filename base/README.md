@@ -233,6 +233,9 @@ typeof Math.abs                   //"function"
 * 判断全局变量是否存在 `typeof window.varName === undefined`
 
 
+<br>
+<br>
+
 ###### constructor属性
 
 `constructor`：返回所有变量的构造函数
@@ -245,7 +248,8 @@ typeof Math.abs                   //"function"
 true.constructor.toString()                   //function Boolean()
 ```
 
-
+<br>
+<br>
 
 ###### javascript中的LHS与RHS
 
@@ -285,7 +289,27 @@ var content = text('hello world');
 
 ```
 
-###### 
+###### 作用域
+
+###### 词法作用域
+
+###### 函数作用域和块作用域
+
+###### 提升
+
+###### 作用域闭包
+
+###### this和对象原型
+
+###### this全面解析
+
+###### 对象
+
+###### 混合对象类
+
+###### 原型
+
+###### 行为委托
 
 
 <!-- https://juejin.im/post/5e59e35ce51d4526e651c338?utm_source=gold_browser_extension -->
