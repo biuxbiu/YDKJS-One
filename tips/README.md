@@ -559,18 +559,13 @@ parseFloat( 11,22)  // 11 , 遇到逗号停止解析
 
 ```
 
-
 #### 透彻Numbe函数
-
-```javascript
-# 透彻 Number() 函数
-
-
 
 ### Number() 函数把对象的值转换为数字
 
 #### 1.如果是布尔值，true 和 false 分别转换成 1 和 0
-```
+
+```javascript
 Number(true)  // 1 , true => 1
 Number(false)  // 0 , false => 0
 ```
@@ -737,14 +732,6 @@ Number.NEGATIVE_INFINITY;  // -Infinity
 #### 总结：Number() 只会返回数字和NaN，个别不正常情况下会报错
 </br>
 </br>
-
-#### 了解更多
-* [一分钟了解更多Css](https://github.com/biuxbiu/BessCss)
-* [一分钟了解更多html](https://github.com/biuxbiu/BessHtml)
-* [一分钟了解更多Javscript](https://github.com/biuxbiu/BeeJavascript)
-</br>
-</br>
-
 
 ```
 
