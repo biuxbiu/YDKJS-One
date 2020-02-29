@@ -51,8 +51,12 @@ console.log(`${textOne}` + ' ' + `${textTwo}`);     //hello world
 
 ###### 你不知道的Boolean
 
+`Boolean`：检查逻辑对象是 `true` 还是 `false`
+
+>输出结果要么 `true` 要么 `false` ，没有别的
+
 ```javascript
-Boolean(-1)                                 //true 除了 0,NaN,undefined,null,''都为 true
+Boolean(-1)                                 //true 除了 0,-0,NaN,undefined,null,''都为 true
 Boolean('')                                 //false ' '都为 true
 Boolean(' ')                                //true ' '都为 true
 Boolean([0])                                //true [0] 为对象,对象都为 true
@@ -71,12 +75,35 @@ Boolean("21">3)                             //true 与数字类型比较，统�
 Boolean("hello">3)                          //false 
 Boolean("hello"<10)                         //false
 Boolean("hello">"")                         //true
-Boolean("hello">"10")                       //true 字母的排列在数字前面
+Boolean("hello">"10")                       //true 字母的排列在数字后面
 Boolean("hello">"word")                     //false `w` 排在 `h` 后面
 ```
 
 <br>
 <br>
+
+###### 你不知道的Number
+
+`Number`：函数把对象的值转换为数字
+
+>输出结果要么 `数字` 要么 `NaN`
+
+```javascript
+
+/* ---- 对象是一个字符串 ----*/
+Number('123')                             //123 将字符串转换成数字
+Number(' 123  ')                          //123 遇到前后空格能够处理
+Number(' 12 3  ')                         //NaN 遇到中间空格输出 `NaN`
+Number('123,12')                          //NaN 
+Number('a123')                            //NaN 遇到非数字直接输出 `NaN`
+
+/* ---- 对象是一个数字 ----*/
+```
+
+document.calculator
+
+!>Number(new Date) 输出时间戳
+
 
 ###### javascript中的LHS与RHS
 
